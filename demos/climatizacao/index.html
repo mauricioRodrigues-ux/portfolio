@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brisa Sul Climatização, ar-condicionado em Porto Alegre</title>
+<meta name="description" content="Projeto conceito de landing page para empresa de climatização, por Maurício Rodrigues.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #13314a;
+    --navy-2: #1d4462;
+    --gelo: #eef5f8;
+    --white: #ffffff;
+    --calor: #e8590c;
+    --aco: #587082;
+    --line: #d3e1e8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  body { background: var(--white); color: var(--navy); font-family: "Archivo", system-ui, sans-serif; font-size: 17px; line-height: 1.55; font-variation-settings: "wdth" 100; }
+  img { max-width: 100%; height: auto; display: block; }
+  :focus-visible { outline: 3px solid var(--calor); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3 { font-weight: 800; font-stretch: 112%; font-variation-settings: "wdth" 112; line-height: 1.02; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(30px, 5.4vw, 48px); }
+  .sub { color: var(--aco); max-width: 54ch; margin-top: 12px; }
+
+  .demo-bar { background: var(--navy); color: #cfe0ea; font-size: 13px; text-align: center; padding: 8px 16px; }
+  .demo-bar a { color: #fff; font-weight: 700; }
+  .miniatura .demo-bar { display: none; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+  .logo { font-weight: 900; font-size: 22px; font-variation-settings: "wdth" 125; letter-spacing: -0.02em; text-decoration: none; color: var(--navy); }
+  .logo span { color: var(--calor); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; cursor: pointer;
+    background: var(--calor); color: #fff; font: 700 16px "Archivo", sans-serif; padding: 16px 24px; border-radius: 8px; text-decoration: none;
+  }
+  .btn:hover { background: #c94a06; }
+  .btn-line { background: transparent; color: var(--navy); border: 2px solid var(--navy); padding: 10px 16px; font-size: 15px; }
+  .btn-line:hover { background: var(--navy); color: #fff; }
+  @media (max-width: 560px) { .nav .btn-line { display: none; } }
+
+  /* Topo: o contraste de temperatura é o título */
+  .hero { background: var(--gelo); padding: 40px 0 0; overflow: hidden; }
+  .hero-grid { display: grid; gap: 32px; }
+  .temps { display: grid; gap: 4px; }
+  .temp { display: flex; align-items: baseline; gap: 14px; }
+  .temp b { font-size: clamp(92px, 19vw, 168px); font-weight: 900; font-variation-settings: "wdth" 70; line-height: 0.82; letter-spacing: -0.04em; }
+  .temp span { font-size: clamp(16px, 2.4vw, 22px); font-weight: 700; font-variation-settings: "wdth" 112; max-width: 9ch; line-height: 1.1; }
+  .temp.fora b { color: var(--calor); }
+  .temp.dentro b { color: var(--navy); }
+  .hero h1 { font-size: clamp(26px, 3.8vw, 36px); margin: 28px 0 12px; max-width: 22ch; }
+  .hero p { color: var(--aco); max-width: 46ch; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin: 24px 0 40px; }
+  .cta-row small { color: var(--aco); font-size: 14px; }
+  .hero-photo { align-self: end; }
+  .hero-photo img { border-radius: 14px 14px 0 0; aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1.2fr 0.8fr; align-items: end; gap: 48px; }
+    .hero-copy { padding-bottom: 8px; }
+  }
+
+  /* Serviços e preços de partida */
+  .services { padding: 80px 0; }
+  .price-list { margin-top: 32px; border-top: 2px solid var(--navy); }
+  .price-row { display: grid; gap: 6px 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  @media (min-width: 760px) { .price-row { grid-template-columns: 1fr 1.3fr auto; align-items: baseline; } }
+  .price-row h3 { font-size: 22px; font-weight: 800; }
+  .price-row p { color: var(--aco); font-size: 16px; }
+  .price-row .val { font-weight: 800; font-size: 20px; white-space: nowrap; }
+  .price-row .val small { font-weight: 500; font-size: 14px; color: var(--aco); margin-right: 6px; }
+
+  /* Calculadora de BTUs */
+  .calc { background: var(--navy); color: #fff; padding: 80px 0; }
+  .calc .sub { color: #b9cfdc; }
+  .calc-grid { display: grid; gap: 28px; margin-top: 36px; }
+  @media (min-width: 900px) { .calc-grid { grid-template-columns: 1.1fr 0.9fr; gap: 48px; } }
+  .field { padding: 18px 0; border-top: 1px solid #2c5675; }
+  .field:first-child { border-top: 0; padding-top: 0; }
+  .field-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .field label, .field legend { font-weight: 700; }
+  .field output { font-weight: 800; font-size: 20px; }
+  input[type="range"] { width: 100%; accent-color: var(--calor); height: 28px; }
+  fieldset { border: 0; }
+  .seg { display: flex; flex-wrap: wrap; gap: 8px; }
+  .seg button {
+    font: 600 15px "Archivo", sans-serif; color: #fff; background: transparent; border: 1px solid #3f6a8a;
+    border-radius: 8px; padding: 10px 16px; cursor: pointer;
+  }
+  .seg button[aria-pressed="true"] { background: #fff; color: var(--navy); border-color: #fff; }
+  .stepper { display: inline-flex; align-items: center; border: 1px solid #3f6a8a; border-radius: 8px; }
+  .stepper button { width: 44px; height: 44px; background: none; border: 0; color: #fff; font-size: 22px; cursor: pointer; }
+  .stepper output { min-width: 40px; text-align: center; }
+  .answer { background: var(--white); color: var(--navy); border-radius: 14px; padding: 28px; align-self: start; }
+  .answer .k { font-size: 15px; color: var(--aco); font-weight: 600; }
+  .answer .btu { font-size: clamp(56px, 10vw, 84px); font-weight: 900; font-variation-settings: "wdth" 70; line-height: 0.95; letter-spacing: -0.03em; margin: 6px 0 2px; }
+  .answer .btu small { font-size: 0.32em; font-variation-settings: "wdth" 100; letter-spacing: 0; margin-left: 6px; }
+  .answer p { color: var(--aco); font-size: 15px; margin: 10px 0 22px; }
+  .answer .btn { width: 100%; }
+
+  /* Como funciona */
+  .how { padding: 80px 0; }
+  .how ol { list-style: none; counter-reset: h; display: grid; gap: 28px; margin-top: 36px; }
+  @media (min-width: 860px) { .how ol { grid-template-columns: repeat(4, 1fr); gap: 24px; } }
+  .how li { counter-increment: h; border-top: 4px solid var(--navy); padding-top: 16px; }
+  .how li::before { content: counter(h); display: block; font-weight: 900; font-size: 40px; font-variation-settings: "wdth" 70; color: var(--calor); line-height: 1; margin-bottom: 10px; }
+  .how b { display: block; font-size: 19px; margin-bottom: 6px; }
+  .how span { color: var(--aco); font-size: 16px; }
+
+  /* Área atendida e perguntas */
+  .area { background: var(--gelo); padding: 72px 0; }
+  .area-grid { display: grid; gap: 32px; }
+  @media (min-width: 900px) { .area-grid { grid-template-columns: 0.9fr 1.1fr; gap: 56px; } }
+  .cities { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; list-style: none; }
+  .cities li { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; font-weight: 600; font-size: 15px; }
+  .area img { border-radius: 14px; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; margin-top: 28px; }
+  details { border-bottom: 1px solid var(--line); }
+  details:first-of-type { border-top: 2px solid var(--navy); }
+  summary { cursor: pointer; list-style: none; padding: 18px 36px 18px 0; font-weight: 700; font-size: 18px; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 2px; top: 12px; font-size: 26px; color: var(--calor); }
+  details[open] summary::after { content: "\2212"; }
+  details p { color: var(--aco); padding-bottom: 20px; }
+
+  .closing { background: var(--calor); color: #fff; padding: 64px 0; }
+  .closing-grid { display: grid; gap: 22px; align-items: center; }
+  @media (min-width: 860px) { .closing-grid { grid-template-columns: 1fr auto; } }
+  .closing p { margin-top: 10px; color: #ffe6d8; }
+  .closing .btn { background: var(--navy); }
+  .closing .btn:hover { background: #0c2235; }
+  footer { padding: 28px 0 36px; color: var(--aco); font-size: 13px; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+    width: min(92vw, 460px); background: var(--navy); color: #fff; border-radius: 12px; padding: 16px 18px;
+    font-size: 14px; box-shadow: 0 18px 50px -12px rgba(19, 49, 74, 0.6); transition: opacity 0.25s, transform 0.25s; z-index: 10;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .toast q { display: block; margin-top: 6px; color: #cfe0ea; }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Projeto conceito de landing page, negócio fictício. Feito por <a href="../../">Maurício Rodrigues</a>.</div>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="logo" href="#">brisa<span>sul</span></a>
+      <button class="btn btn-line" data-whats="topo">Pedir orçamento</button>
+    </nav>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="temps" aria-label="38 graus lá fora, 23 graus aqui dentro">
+          <div class="temp fora"><b>38°</b><span>lá fora em janeiro</span></div>
+          <div class="temp dentro"><b>23°</b><span>na sua sala</span></div>
+        </div>
+        <h1>Instalação e manutenção de ar-condicionado em Porto Alegre</h1>
+        <p>Técnicos próprios, visita com hora marcada e garantia de 1 ano na instalação. Orçamento pelo WhatsApp no mesmo dia.</p>
+        <div class="cta-row">
+          <button class="btn" data-whats="topo">Pedir orçamento no WhatsApp</button>
+          <small>Agenda de dezembro aberta</small>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1792799888905-8696bd32a11a?w=900&q=80&auto=format&fit=crop" alt="Técnico medindo a pressão do gás de uma condensadora com manômetro" width="900" height="1125">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="services">
+  <div class="wrap">
+    <h2>Serviços e preços de partida</h2>
+    <p class="sub">O valor final sai na visita, depois de ver a distância entre as unidades e o tipo de parede.</p>
+    <div class="price-list">
+      <div class="price-row"><h3>Instalação de split</h3><p>Aparelhos de 9.000 a 12.000 BTUs, até 3 metros de tubulação, suporte e dreno.</p><div class="val"><small>a partir de</small>R$ 590</div></div>
+      <div class="price-row"><h3>Limpeza completa</h3><p>Higienização da evaporadora e da condensadora, com bactericida. Recomendada a cada 6 meses.</p><div class="val"><small>a partir de</small>R$ 190</div></div>
+      <div class="price-row"><h3>Conserto e carga de gás</h3><p>Diagnóstico de vazamento, aparelho que não gela, barulho ou água pingando.</p><div class="val"><small>visita</small>R$ 120</div></div>
+      <div class="price-row"><h3>Contrato para empresas</h3><p>Manutenção periódica com relatório técnico, para lojas, consultórios e escritórios.</p><div class="val"><small>sob</small>orçamento</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="calc" id="calculadora">
+  <div class="wrap">
+    <h2>Qual ar-condicionado serve para o seu cômodo?</h2>
+    <p class="sub">Responda três perguntas. O cálculo usa a mesma regra que nossos técnicos aplicam na visita.</p>
+    <div class="calc-grid">
+      <div>
+        <div class="field">
+          <div class="field-head"><label for="area">Tamanho do cômodo</label><output id="area-out" for="area">15 m²</output></div>
+          <input type="range" id="area" min="6" max="60" step="1" value="15">
+        </div>
+        <fieldset class="field">
+          <div class="field-head"><legend>Pega sol à tarde?</legend></div>
+          <div class="seg" role="group" aria-label="Sol à tarde">
+            <button type="button" data-sun="0" aria-pressed="true">Não</button>
+            <button type="button" data-sun="1" aria-pressed="false">Sim</button>
+          </div>
+        </fieldset>
+        <div class="field">
+          <div class="field-head"><span id="people-label" style="font-weight:700">Pessoas no cômodo</span>
+            <div class="stepper" role="group" aria-labelledby="people-label">
+              <button type="button" id="minus" aria-label="Menos uma pessoa">&minus;</button>
+              <output id="people" aria-live="polite">2</output>
+              <button type="button" id="plus" aria-label="Mais uma pessoa">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="answer" aria-live="polite">
+        <p class="k">Aparelho recomendado</p>
+        <div class="btu"><span id="btu">12.000</span><small>BTUs</small></div>
+        <p id="btu-note">Cálculo exato de 9.600 BTUs. Arredondamos para o tamanho de aparelho que existe no mercado.</p>
+        <button class="btn" data-whats="calculadora">Pedir orçamento deste aparelho</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <h2>Do orçamento ao ar gelando</h2>
+    <ol>
+      <li><b>Orçamento</b><span>Você manda foto da parede e o tamanho do cômodo pelo WhatsApp.</span></li>
+      <li><b>Visita técnica</b><span>Confirmamos o ponto de instalação e o valor fechado, com hora marcada.</span></li>
+      <li><b>Instalação</b><span>Em média 3 horas, com proteção dos móveis e limpeza no final.</span></li>
+      <li><b>Garantia</b><span>1 ano na instalação e lembrete da próxima limpeza no WhatsApp.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="area">
+  <div class="wrap area-grid">
+    <div>
+      <h2>Onde atendemos</h2>
+      <ul class="cities">
+        <li>Porto Alegre</li><li>Canoas</li><li>Cachoeirinha</li><li>Gravataí</li><li>Alvorada</li><li>Viamão</li>
+      </ul>
+      <img src="https://images.unsplash.com/photo-1792799881226-e841c0f9c125?w=900&q=80&auto=format&fit=crop" alt="Técnico conectando mangueira em condensadora externa" width="900" height="600" loading="lazy">
+    </div>
+    <div>
+      <h2>Perguntas frequentes</h2>
+      <div style="margin-top:22px">
+        <details><summary>Vocês vendem o aparelho?</summary><p>Podemos indicar o modelo e o melhor preço do mês, mas você compra onde preferir. Instalamos qualquer marca.</p></details>
+        <details><summary>Preciso de autorização do condomínio?</summary><p>Na maioria dos prédios, sim. Mandamos a ficha técnica do aparelho para você entregar ao síndico.</p></details>
+        <details><summary>Quanto tempo depois da compra posso instalar?</summary><p>No verão, a agenda fica em torno de 5 a 7 dias. Quem agenda em novembro instala antes do pico.</p></details>
+        <details><summary>Atendem fim de semana?</summary><p>Sábado pela manhã, com hora marcada.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap closing-grid">
+    <div>
+      <h2>Garanta a instalação antes do calor.</h2>
+      <p>Orçamento pelo WhatsApp, resposta no mesmo dia.</p>
+    </div>
+    <button class="btn" data-whats="rodape">Pedir orçamento no WhatsApp</button>
+  </div>
+</section>
+<footer><div class="wrap">Brisa Sul Climatização é um negócio fictício criado para demonstração.</div></footer>
+
+<div class="toast" role="status" id="toast"></div>
+
+<script>
+  if (location.search.includes('miniatura')) document.documentElement.classList.add('miniatura');
+
+  const $ = id => document.getElementById(id);
+  const sizes = [9000, 12000, 18000, 24000, 30000, 36000, 48000, 60000];
+  const state = { area: 15, sun: 0, people: 2 };
+  const fmt = n => n.toLocaleString('pt-BR');
+  let rec = 12000;
+
+  // Regra de mercado: 600 BTUs por m² (800 com sol à tarde) e 600 por pessoa a partir da segunda
+  function calc() {
+    const exact = state.area * (state.sun ? 800 : 600) + Math.max(0, state.people - 1) * 600;
+    rec = sizes.find(s => s >= exact) || sizes[sizes.length - 1];
+    $('area-out').textContent = state.area + ' m²';
+    $('people').textContent = state.people;
+    $('btu').textContent = fmt(rec);
+    $('btu-note').textContent = exact > 60000
+      ? 'Ambiente grande para um aparelho só. Na visita avaliamos dividir em dois.'
+      : `Cálculo exato de ${fmt(exact)} BTUs. Arredondamos para o tamanho de aparelho que existe no mercado.`;
+  }
+  $('area').addEventListener('input', e => { state.area = +e.target.value; calc(); });
+  document.querySelectorAll('[data-sun]').forEach(b => b.addEventListener('click', () => {
+    state.sun = +b.dataset.sun;
+    document.querySelectorAll('[data-sun]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    calc();
+  }));
+  $('minus').addEventListener('click', () => { state.people = Math.max(1, state.people - 1); calc(); });
+  $('plus').addEventListener('click', () => { state.people = Math.min(12, state.people + 1); calc(); });
+  calc();
+
+  // Na página real, o botão abre o WhatsApp com esta mensagem e dispara o evento de lead
+  let timer;
+  document.querySelectorAll('[data-whats]').forEach(btn => btn.addEventListener('click', () => {
+    const msg = btn.dataset.whats === 'calculadora'
+      ? `Olá! Quero orçamento de instalação para um cômodo de ${state.area} m². A calculadora indicou ${fmt(rec)} BTUs.`
+      : 'Olá! Quero um orçamento de ar-condicionado.';
+    (window.dataLayer = window.dataLayer || []).push({ event: 'clique_whatsapp', origem: btn.dataset.whats, btus: rec });
+    const t = $('toast');
+    t.textContent = 'Demonstração: na página real, este botão abre o WhatsApp da empresa com a mensagem pronta e registra o lead no Meta e no Google.';
+    const q = document.createElement('q'); q.textContent = msg; t.appendChild(q);
+    t.classList.add('show'); clearTimeout(timer); timer = setTimeout(() => t.classList.remove('show'), 5200);
+  }));
+</script>
+</body>
+</html>

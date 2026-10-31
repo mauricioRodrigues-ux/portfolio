@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Malva Estética, avaliação facial em Porto Alegre</title>
+<meta name="description" content="Projeto conceito de landing page para clínica de estética, por Maurício Rodrigues.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2a1f2d;
+    --ink-soft: #5d4f60;
+    --malva: #8e6a8f;
+    --malva-deep: #6b4d6d;
+    --bruma: #efeaf0;
+    --veu: #f8f6f9;
+    --salvia: #6f7f6a;
+    --line: #dcd3de;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+  body { background: var(--veu); color: var(--ink); font-family: "Figtree", system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--malva-deep); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; line-height: 1.05; letter-spacing: -0.005em; }
+  h2 { font-size: clamp(34px, 6vw, 52px); }
+
+  .demo-bar { background: var(--ink); color: #e9e2ea; font-size: 13px; text-align: center; padding: 8px 16px; }
+  .demo-bar a { color: #fff; font-weight: 600; }
+  .miniatura .demo-bar { display: none; }
+
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+  .logo { font-family: "Instrument Serif", Georgia, serif; font-size: 28px; text-decoration: none; }
+  .logo small { font-family: "Figtree", sans-serif; font-size: 12px; color: var(--ink-soft); margin-left: 6px; letter-spacing: 0.02em; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; border: 0; cursor: pointer;
+    background: var(--malva-deep); color: #fff; font: 600 16px "Figtree", sans-serif;
+    padding: 15px 24px; border-radius: 999px; text-decoration: none;
+  }
+  .btn:hover { background: var(--ink); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); padding: 11px 18px; font-size: 15px; }
+  .btn-ghost:hover { background: var(--ink); color: #fff; }
+  @media (max-width: 560px) { .nav .btn-ghost { display: none; } }
+
+  /* Topo: foto em arco, como um espelho de clínica */
+  .hero { display: grid; gap: 36px; padding: 24px 0 72px; align-items: end; }
+  .hero h1 { font-size: clamp(46px, 9vw, 92px); max-width: 11ch; }
+  .hero p { color: var(--ink-soft); max-width: 46ch; margin: 22px 0 30px; font-size: 18px; }
+  .hero .meta { margin-top: 22px; font-size: 14px; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .hero .meta span::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--salvia); margin-right: 8px; vertical-align: middle; }
+  .arch { position: relative; border-radius: 999px 999px 24px 24px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--bruma); }
+  .arch img { width: 100%; height: 100%; object-fit: cover; }
+  .arch-note {
+    position: absolute; left: 16px; right: 16px; bottom: 16px; background: rgba(248, 246, 249, 0.94);
+    border-radius: 16px; padding: 14px 16px; font-size: 14px; color: var(--ink-soft);
+  }
+  .arch-note b { color: var(--ink); display: block; font-size: 15px; }
+  @media (min-width: 900px) {
+    .hero { grid-template-columns: 1.15fr 0.85fr; gap: 56px; }
+  }
+
+  /* Escolha da queixa */
+  .chooser { background: var(--bruma); padding: 80px 0; }
+  .chooser .intro { color: var(--ink-soft); max-width: 52ch; margin-top: 12px; }
+  .concerns { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0 28px; }
+  .concern {
+    font: 600 16px "Figtree", sans-serif; color: var(--ink); background: var(--veu);
+    border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px; cursor: pointer;
+  }
+  .concern:hover { border-color: var(--malva); }
+  .concern[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .result {
+    display: grid; gap: 28px; background: var(--veu); border-radius: 28px; padding: 28px;
+    border: 1px solid var(--line);
+  }
+  @media (min-width: 860px) { .result { grid-template-columns: 1fr 1fr; padding: 40px; align-items: center; } }
+  .result .label { font-size: 14px; color: var(--salvia); font-weight: 600; }
+  .result h3 { font-size: clamp(32px, 5vw, 44px); margin: 6px 0 12px; }
+  .result p { color: var(--ink-soft); }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+  .facts div { border-top: 1px solid var(--line); padding-top: 10px; }
+  .facts dt { font-size: 13px; color: var(--ink-soft); }
+  .facts dd { font-family: "Instrument Serif", Georgia, serif; font-size: 24px; line-height: 1.2; }
+  .result img { border-radius: 20px; aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+  .result-body { transition: opacity 0.25s ease; }
+  .result-body.swap { opacity: 0; }
+
+  /* Primeira consulta */
+  .first { padding: 88px 0; }
+  .first-grid { display: grid; gap: 40px; }
+  @media (min-width: 900px) { .first-grid { grid-template-columns: 0.9fr 1.1fr; gap: 72px; } }
+  .first .intro { color: var(--ink-soft); margin-top: 14px; max-width: 40ch; }
+  .steps { list-style: none; counter-reset: s; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 22px 0; border-top: 1px solid var(--line); }
+  .steps li::before { content: counter(s); font-family: "Instrument Serif", Georgia, serif; font-size: 44px; line-height: 1; color: var(--malva); }
+  .steps b { display: block; font-size: 18px; margin-bottom: 4px; }
+  .steps span { color: var(--ink-soft); }
+
+  /* Perguntas */
+  .faq { padding: 0 0 88px; }
+  .faq-list { margin-top: 28px; max-width: 760px; }
+  details { border-top: 1px solid var(--line); }
+  details:last-child { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; font-weight: 600; font-size: 18px; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-size: 26px; font-weight: 400; color: var(--malva-deep); }
+  details[open] summary::after { content: "\2212"; }
+  details p { color: var(--ink-soft); padding: 0 0 22px; max-width: 64ch; }
+
+  /* Fechamento */
+  .closing { background: var(--ink); color: #f3eef4; padding: 80px 0; }
+  .closing-grid { display: grid; gap: 28px; align-items: end; }
+  @media (min-width: 860px) { .closing-grid { grid-template-columns: 1.3fr 1fr; } }
+  .closing p { color: #cfc4d1; margin-top: 14px; max-width: 46ch; }
+  .closing .btn { background: #f3eef4; color: var(--ink); }
+  .closing .btn:hover { background: #fff; }
+  .closing address { font-style: normal; color: #cfc4d1; font-size: 15px; margin-top: 18px; }
+  footer { background: var(--ink); color: #9d8fa0; font-size: 13px; padding: 0 0 32px; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+    width: min(92vw, 460px); background: var(--ink); color: #fff; border-radius: 16px; padding: 16px 18px;
+    font-size: 14px; box-shadow: 0 18px 50px -12px rgba(42, 31, 45, 0.6); transition: opacity 0.25s, transform 0.25s; z-index: 10;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .toast q { display: block; margin-top: 6px; color: #e2d7e4; }
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Projeto conceito de landing page, negócio fictício. Feito por <a href="../../">Maurício Rodrigues</a>.</div>
+
+<div class="wrap">
+  <nav class="nav">
+    <a class="logo" href="#">Malva <small>estética avançada</small></a>
+    <button class="btn btn-ghost" data-whats="geral">Agendar avaliação</button>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Pele tratada com calma e com plano.</h1>
+      <p>Antes de qualquer procedimento, uma avaliação de 40 minutos com biomédica esteta. Você sai sabendo o que fazer, quantas sessões e quanto vai investir.</p>
+      <button class="btn" data-whats="geral">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+        Agendar avaliação pelo WhatsApp
+      </button>
+      <div class="meta"><span>Moinhos de Vento, Porto Alegre</span><span>Segunda a sábado</span><span>Avaliação R$ 120, abatida no tratamento</span></div>
+    </div>
+    <figure class="arch">
+      <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=900&q=80&auto=format&fit=crop" alt="Paciente recebendo tratamento facial em cabine clara" width="900" height="1125">
+      <figcaption class="arch-note"><b>Atendimento individual</b>Uma paciente por vez, sem sala de espera cheia.</figcaption>
+    </figure>
+  </header>
+</div>
+
+<section class="chooser" id="queixas">
+  <div class="wrap">
+    <h2>O que mais te incomoda hoje?</h2>
+    <p class="intro">Escolha uma opção e veja o tratamento que costumamos indicar. A indicação final sempre sai da avaliação.</p>
+
+    <div class="concerns" role="group" aria-label="Queixas">
+      <button class="concern" aria-pressed="true" data-key="manchas">Manchas</button>
+      <button class="concern" aria-pressed="false" data-key="acne">Acne e marcas</button>
+      <button class="concern" aria-pressed="false" data-key="flacidez">Flacidez</button>
+      <button class="concern" aria-pressed="false" data-key="linhas">Linhas de expressão</button>
+      <button class="concern" aria-pressed="false" data-key="olheiras">Olheiras</button>
+    </div>
+
+    <div class="result" aria-live="polite">
+      <div class="result-body">
+        <p class="label" id="r-label">Para manchas</p>
+        <h3 id="r-title">Peeling químico com protocolo de clareamento</h3>
+        <p id="r-text">Uniformiza o tom e reduz manchas de sol e de melasma, com cuidados em casa entre as sessões.</p>
+        <dl class="facts">
+          <div><dt>Sessões</dt><dd id="r-sessions">4 a 6</dd></div>
+          <div><dt>Intervalo</dt><dd id="r-gap">15 dias</dd></div>
+          <div><dt>Duração</dt><dd id="r-time">50 min</dd></div>
+        </dl>
+        <button class="btn" data-whats="escolha">Quero avaliar meu caso</button>
+      </div>
+      <img id="r-img" src="https://images.unsplash.com/photo-1761718209835-c8586b7dcac0?w=900&q=80&auto=format&fit=crop" alt="Aplicação de produto no rosto com pincel" width="900" height="675" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="first">
+  <div class="wrap first-grid">
+    <div>
+      <h2>Como é a primeira consulta</h2>
+      <p class="intro">Ninguém sai daqui com procedimento marcado sem entender o porquê.</p>
+    </div>
+    <ol class="steps">
+      <li><div><b>Conversa e análise da pele</b><span>Histórico, rotina, medicamentos e foto de acompanhamento com a mesma luz em todas as consultas.</span></div></li>
+      <li><div><b>Plano por escrito</b><span>Tratamento indicado, número de sessões, intervalo e valor total. Você leva para casa e decide com calma.</span></div></li>
+      <li><div><b>Primeira sessão</b><span>Se quiser começar no mesmo dia e o tratamento permitir, já fazemos. O valor da avaliação é abatido.</span></div></li>
+      <li><div><b>Retorno de acompanhamento</b><span>Comparação das fotos e ajuste do plano, sem custo.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2>Perguntas frequentes</h2>
+    <div class="faq-list">
+      <details><summary>Quem faz os atendimentos?</summary><p>Biomédicas estetas com especialização em estética avançada. A mesma profissional acompanha você do início ao fim do tratamento.</p></details>
+      <details><summary>Dói?</summary><p>A maioria dos procedimentos causa só um leve ardor. Quando é preciso, usamos anestésico tópico antes.</p></details>
+      <details><summary>Posso parcelar?</summary><p>Sim, os pacotes podem ser parcelados no cartão. O valor fica definido no plano escrito da avaliação.</p></details>
+      <details><summary>Tem estacionamento?</summary><p>Há estacionamento conveniado a uma quadra da clínica.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap closing-grid">
+    <div>
+      <h2>Comece pela avaliação.</h2>
+      <p>Responda pelo WhatsApp com o melhor dia e horário. A confirmação chega em até duas horas, no horário comercial.</p>
+      <address>Moinhos de Vento, Porto Alegre<br>Segunda a sexta, das 9h às 20h. Sábado, das 9h às 14h.</address>
+    </div>
+    <div><button class="btn" data-whats="geral">Agendar avaliação pelo WhatsApp</button></div>
+  </div>
+</section>
+<footer><div class="wrap">Malva Estética é um negócio fictício criado para demonstração.</div></footer>
+
+<div class="toast" role="status" id="toast"></div>
+
+<script>
+  if (location.search.includes('miniatura')) document.documentElement.classList.add('miniatura');
+
+  const data = {
+    manchas: { label: 'Para manchas', title: 'Peeling químico com protocolo de clareamento', text: 'Uniformiza o tom e reduz manchas de sol e de melasma, com cuidados em casa entre as sessões.', sessions: '4 a 6', gap: '15 dias', time: '50 min', img: 'photo-1761718209835-c8586b7dcac0', alt: 'Aplicação de produto no rosto com pincel' },
+    acne: { label: 'Para acne e marcas', title: 'Limpeza profunda com microagulhamento', text: 'Controla a acne ativa e, depois, trabalha as marcas que ficaram, em fases separadas.', sessions: '3 a 5', gap: '30 dias', time: '60 min', img: 'photo-1761718209708-9ab9ba1c7252', alt: 'Rosto com espuma de limpeza durante tratamento' },
+    flacidez: { label: 'Para flacidez', title: 'Radiofrequência com bioestimulador', text: 'Estimula a produção de colágeno para firmar a pele do rosto e do pescoço de forma gradual.', sessions: '6 a 8', gap: '7 dias', time: '40 min', img: 'photo-1570172619644-dfd03ed5d881', alt: 'Paciente com máscara facial em cabine' },
+    linhas: { label: 'Para linhas de expressão', title: 'Toxina botulínica com retorno de ajuste', text: 'Suaviza linhas da testa e dos olhos mantendo a expressão natural. Retorno em 15 dias incluso.', sessions: '1', gap: '4 a 6 meses', time: '30 min', img: 'photo-1683579808784-6faf6af67a40', alt: 'Close de procedimento estético no rosto' },
+    olheiras: { label: 'Para olheiras', title: 'Peeling de olhos com skinbooster', text: 'Clareia e hidrata a região dos olhos, reduzindo o aspecto de cansaço.', sessions: '3 a 4', gap: '21 dias', time: '40 min', img: 'photo-1655026392641-bf283a5f12d4', alt: 'Gota de sérum saindo de conta-gotas' }
+  };
+  let current = 'manchas';
+  const $ = id => document.getElementById(id);
+  const body = document.querySelector('.result-body');
+
+  document.querySelectorAll('.concern').forEach(btn => btn.addEventListener('click', () => {
+    current = btn.dataset.key;
+    document.querySelectorAll('.concern').forEach(b => b.setAttribute('aria-pressed', b === btn));
+    const d = data[current];
+    body.classList.add('swap');
+    setTimeout(() => {
+      $('r-label').textContent = d.label; $('r-title').textContent = d.title; $('r-text').textContent = d.text;
+      $('r-sessions').textContent = d.sessions; $('r-gap').textContent = d.gap; $('r-time').textContent = d.time;
+      $('r-img').src = `https://images.unsplash.com/${d.img}?w=900&q=80&auto=format&fit=crop`; $('r-img').alt = d.alt;
+      body.classList.remove('swap');
+    }, 200);
+    (window.dataLayer = window.dataLayer || []).push({ event: 'escolha_queixa', queixa: current });
+  }));
+
+  // Na página real, o botão abre o WhatsApp com esta mensagem e dispara o evento de lead
+  let timer;
+  document.querySelectorAll('[data-whats]').forEach(btn => btn.addEventListener('click', () => {
+    const msg = btn.dataset.whats === 'escolha'
+      ? `Olá! Quero agendar uma avaliação para ${data[current].label.replace('Para ', '')}.`
+      : 'Olá! Quero agendar uma avaliação.';
+    (window.dataLayer = window.dataLayer || []).push({ event: 'clique_whatsapp', origem: btn.dataset.whats, queixa: current });
+    const t = $('toast');
+    t.innerHTML = 'Demonstração: na página real, este botão abre o WhatsApp da clínica com a mensagem pronta e registra o lead no Meta e no Google.';
+    const q = document.createElement('q'); q.textContent = msg; t.appendChild(q);
+    t.classList.add('show'); clearTimeout(timer); timer = setTimeout(() => t.classList.remove('show'), 5200);
+  }));
+</script>
+</body>
+</html>

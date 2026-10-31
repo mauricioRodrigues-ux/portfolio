@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maurício Rodrigues, landing pages e tráfego</title>
+<meta name="description" content="Landing pages para negócios locais, prontas para receber tráfego pago, com pixel e conversões configurados.">
+<meta property="og:title" content="Maurício Rodrigues, landing pages e tráfego">
+<meta property="og:description" content="Landing pages para negócios locais, prontas para receber tráfego pago, com pixel e conversões configurados.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mauriciorodrigues-ux.github.io/portfolio/">
+<meta property="og:image" content="https://mauriciorodrigues-ux.github.io/portfolio/previa.jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="600">
+<meta property="og:image:alt" content="Foto de Maurício Rodrigues">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0d0d;
+    --surface: #171515;
+    --surface-2: #1f1c1c;
+    --line: #2c2727;
+    --text: #efe9e2;
+    --muted: #a89f97;
+    --wine: #7a1f2b;
+    --wine-soft: #3a1a1f;
+    --gold: #c2a46a;
+    --gold-soft: #2a241a;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px; line-height: 1.6;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; }
+  h2 { font-size: clamp(26px, 5vw, 36px); }
+  .lead { color: var(--muted); max-width: 600px; margin-top: 10px; }
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+
+  /* Topo */
+  .hero { padding: 56px 0 64px; }
+  .hero-grid { display: grid; gap: 28px; align-items: center; }
+  .avatar {
+    width: 112px; height: 112px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--gold); box-shadow: 0 0 0 6px var(--gold-soft);
+  }
+  .hero .who { font-weight: 700; margin-bottom: 2px; }
+  .hero .role { color: var(--muted); font-size: 14px; }
+  .hero h1 { font-size: clamp(34px, 7vw, 56px); margin: 22px 0 16px; max-width: 760px; }
+  .hero p.intro { color: var(--muted); max-width: 580px; font-size: 17px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; list-style: none; }
+  .facts li {
+    font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 999px;
+    background: var(--surface-2); border: 1px solid var(--line);
+  }
+  @media (min-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr auto; }
+    .avatar { width: 176px; height: 176px; }
+  }
+
+  /* Projetos: miniatura ao vivo de cada página */
+  .projects { display: grid; gap: 40px; margin-top: 36px; }
+  .project { display: grid; gap: 22px; align-items: center; }
+  @media (min-width: 900px) {
+    .project { grid-template-columns: 1.35fr 1fr; gap: 40px; }
+    .project:nth-child(even) .shot { order: 2; }
+  }
+  .shot {
+    display: block; text-decoration: none; border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--line); background: var(--surface);
+    box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+  }
+  .shot-bar { display: flex; align-items: center; gap: 6px; padding: 10px 12px; background: var(--surface-2); border-bottom: 1px solid var(--line); }
+  .shot-bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3434; }
+  .shot-bar span { margin-left: 8px; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .viewport { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; }
+  .viewport iframe {
+    position: absolute; top: 0; left: 0; width: 1280px; height: 800px; border: 0;
+    transform-origin: 0 0; transform: scale(var(--s, 0.4)); pointer-events: none;
+  }
+  .project .kind { color: var(--gold); font-size: 14px; font-weight: 600; }
+  .project h3 { font-size: clamp(24px, 4vw, 30px); margin: 4px 0 10px; }
+  .project p { color: var(--muted); }
+  .project ul { list-style: none; display: grid; gap: 8px; margin: 16px 0 20px; }
+  .project li { position: relative; padding-left: 22px; font-size: 15px; }
+  .project li::before {
+    content: ""; position: absolute; left: 2px; top: 9px; width: 9px; height: 5px;
+    border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg);
+  }
+  .link { font-weight: 700; color: var(--text); text-decoration-color: var(--wine); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+  .link:hover { color: var(--gold); }
+
+  /* Serviços */
+  .services { display: grid; gap: 16px; margin-top: 32px; }
+  @media (min-width: 860px) { .services { grid-template-columns: repeat(3, 1fr); } }
+  .service { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px; }
+  .service h3 { font-size: 22px; margin-bottom: 8px; }
+  .service p { color: var(--muted); font-size: 15px; }
+  .service .time { margin-top: 16px; font-size: 14px; color: var(--gold); font-weight: 600; }
+
+  /* Processo */
+  .steps { list-style: none; counter-reset: step; display: grid; gap: 0; margin-top: 32px; max-width: 720px; }
+  .steps li { counter-increment: step; display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .steps li:first-child { border-top: 0; }
+  .steps li::before {
+    content: counter(step); font-family: "Fraunces", Georgia, serif; font-size: 22px; color: var(--gold);
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid #3d3423; display: grid; place-items: center;
+  }
+  .steps b { display: block; margin-bottom: 2px; }
+  .steps span { color: var(--muted); font-size: 15px; }
+
+  /* Fechamento */
+  .closing { text-align: left; }
+  .closing p { color: var(--muted); max-width: 560px; margin-top: 12px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="who">Maurício Rodrigues</p>
+      <p class="role">Desenvolvimento web e gestão de tráfego, Porto Alegre</p>
+      <h1>Landing pages para negócios locais, prontas para receber tráfego pago.</h1>
+      <p class="intro">Eu construo a página e deixo o pixel e as conversões configurados, para que cada clique no anúncio vire uma conversa no WhatsApp e apareça certo no relatório.</p>
+      <ul class="facts">
+        <li>Análise e Desenvolvimento de Sistemas</li>
+        <li>Gestor de tráfego Meta e Google</li>
+        <li>Atendo todo o Brasil</li>
+      </ul>
+    </div>
+    <img class="avatar" src="mauricio.png" width="288" height="288" alt="Foto de Maurício Rodrigues">
+  </div>
+</header>
+
+<main>
+  <section id="projetos">
+    <div class="wrap">
+      <h2>Projetos</h2>
+      <p class="lead">As páginas abaixo estão no ar. Clique para abrir e testar no celular.</p>
+
+      <div class="projects">
+        <article class="project">
+          <a class="shot" href="demos/estetica/" aria-label="Abrir a página da Malva Estética">
+            <div class="shot-bar"><i></i><i></i><i></i><span>Malva Estética</span></div>
+            <div class="viewport"><iframe src="demos/estetica/?miniatura" title="Miniatura da página da Malva Estética" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+          </a>
+          <div>
+            <p class="kind">Projeto conceito, clínica de estética</p>
+            <h3>Malva Estética</h3>
+            <p>Página para agendar avaliação. A pessoa escolhe o que incomoda e a página indica o tratamento.</p>
+            <ul>
+              <li>Mensagem do WhatsApp já sai com o tratamento escolhido</li>
+              <li>Evento de clique pronto para Meta e Google</li>
+              <li>Perguntas frequentes que respondem antes da conversa</li>
+            </ul>
+            <a class="link" href="demos/estetica/">Abrir a página</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="shot" href="demos/climatizacao/" aria-label="Abrir a página da Brisa Sul Climatização">
+            <div class="shot-bar"><i></i><i></i><i></i><span>Brisa Sul Climatização</span></div>
+            <div class="viewport"><iframe src="demos/climatizacao/?miniatura" title="Miniatura da página da Brisa Sul Climatização" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+          </a>
+          <div>
+            <p class="kind">Projeto conceito, prestador de serviço</p>
+            <h3>Brisa Sul Climatização</h3>
+            <p>Página de orçamento para instalação e manutenção de ar-condicionado, com calculadora de BTUs.</p>
+            <ul>
+              <li>Calculadora indica o aparelho certo para o cômodo</li>
+              <li>Pedido de orçamento chega com tamanho e BTUs</li>
+              <li>Preços de partida e área atendida à vista</li>
+            </ul>
+            <a class="link" href="demos/climatizacao/">Abrir a página</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="shot" href="https://mauriciorodrigues-ux.github.io/planos-restaurantes/" aria-label="Abrir a página de planos para restaurantes">
+            <div class="shot-bar"><i></i><i></i><i></i><span>Planos para restaurantes</span></div>
+            <div class="viewport"><iframe src="https://mauriciorodrigues-ux.github.io/planos-restaurantes/" title="Miniatura da página de planos para restaurantes" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+          </a>
+          <div>
+            <p class="kind">Página de oferta</p>
+            <h3>Planos para restaurantes</h3>
+            <p>Página de venda de serviço com três planos, prazos e escopo fechado.</p>
+            <ul>
+              <li>Comparação de planos clara no celular</li>
+              <li>Prazos e condições explicados antes do contato</li>
+              <li>Prévia de link com foto para enviar no WhatsApp</li>
+            </ul>
+            <a class="link" href="https://mauriciorodrigues-ux.github.io/planos-restaurantes/">Abrir a página</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <h2>O que eu entrego</h2>
+      <div class="services">
+        <div class="service">
+          <h3>Landing page</h3>
+          <p>Página única para um serviço ou oferta, feita para celular, com botão de WhatsApp ou formulário. Você recebe a página publicada e os arquivos.</p>
+          <p class="time">Primeira versão em até 5 dias</p>
+        </div>
+        <div class="service">
+          <h3>Ajustes em site</h3>
+          <p>Correção de layout, página lenta, formulário que não chega, versão de celular quebrada e textos desatualizados.</p>
+          <p class="time">Entrega em 1 a 3 dias</p>
+        </div>
+        <div class="service">
+          <h3>Pixel e conversões</h3>
+          <p>Configuração de Meta Pixel, API de conversões, Google Tag Manager, GA4 e conversões do Google Ads, com teste de cada evento.</p>
+          <p class="time">Entrega em 1 a 2 dias</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="processo">
+    <div class="wrap">
+      <h2>Como eu trabalho</h2>
+      <ol class="steps">
+        <li><div><b>Briefing</b><span>Você me conta o serviço, o público e para onde o cliente deve ir. Se tiver logo, fotos e textos, me manda junto.</span></div></li>
+        <li><div><b>Primeira versão</b><span>Eu monto a página e envio o link para você ver no celular.</span></div></li>
+        <li><div><b>Ajustes</b><span>Duas rodadas de ajuste incluídas, em textos, cores, fotos e ordem das seções.</span></div></li>
+        <li><div><b>Publicação</b><span>Página no ar no seu domínio, eventos testados e arquivos entregues.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <h2>Vamos conversar sobre o seu projeto</h2>
+      <p>Me chame pela plataforma onde você me encontrou. Respondo no mesmo dia, com prazo e valor fechados.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Maurício Rodrigues, Porto Alegre. As páginas marcadas como projeto conceito são demonstrações com negócios fictícios.</div>
+</footer>
+
+<script>
+  // Ajusta a escala das miniaturas ao tamanho do quadro
+  const frames = document.querySelectorAll('.viewport');
+  const fit = el => el.style.setProperty('--s', el.clientWidth / 1280);
+  const ro = new ResizeObserver(entries => entries.forEach(e => fit(e.target)));
+  frames.forEach(el => { fit(el); ro.observe(el); });
+</script>
+</body>
+</html>
